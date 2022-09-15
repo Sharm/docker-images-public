@@ -6,14 +6,9 @@ FROM debian:bullseye-slim
 
 ENV TZ="Europe/Moscow"
 
-RUN apt-get update -y
-
-RUN apt-get install -y --no-install-recommends mc # for debug
-
-RUN apt-get install -y --no-install-recommends dante-server
+RUN apt-get update -y && apt-get install -y --no-install-recommends dante-server
 
 RUN mv /etc/danted.conf /etc/danted.conf.original
-
 COPY danted.conf /etc/danted.conf
 
 ARG USER_NAME
